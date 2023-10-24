@@ -17,7 +17,20 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { Routes, Route } from "react-router-dom"
 import Dashboard from './PrivateComponents/Dashboard'
+import { makeStyles } from "@mui/styles"
 const drawerWidth = 240;
+
+
+const useStyles = makeStyles(() => ({
+    main: {
+        marginTop: 10,
+        marginLeft: 2,
+        marginRight: 2,
+        overflow: "auto",
+        marginBottom: 2,
+        height: "87vh"
+    }
+}))
 
 interface Props {
     window?: () => Window;
@@ -26,6 +39,7 @@ interface Props {
 export default function NavigationDrawer(props: Props) {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
+    const classes = useStyles()
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -115,7 +129,9 @@ export default function NavigationDrawer(props: Props) {
             </Box>
             <Box
                 component="main"
-                sx={{ flexGrow: 1, p: 3, backgroundColor: "black", width: { sm: `calc(100% - ${drawerWidth}px)` } }}
+
+                sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
+                className={classes.main}
             >
                 <Routes><Route path='/dashboard' element={<Dashboard />} /></Routes>
             </Box>

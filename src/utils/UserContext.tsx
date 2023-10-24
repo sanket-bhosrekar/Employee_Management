@@ -8,7 +8,7 @@ interface AuthProviderProps {
 }
 
 function ContextProvider({ children }: AuthProviderProps): ReactElement {
-    const [isAuthenticated, setIsAuthenticated] = useState<Boolean>(true)
+    const [isAuthenticated, setIsAuthenticated] = useState<Boolean>(false)
     return (
         <UserContext.Provider value={isAuthenticated} >
             <DisatchContext.Provider value={setIsAuthenticated}>
